@@ -4,7 +4,7 @@
   <subtitle><![CDATA[业精于勤而荒于嬉 行成于思而毁于随]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://shiyansong.com/"/>
-  <updated>2016-09-22T02:03:44.298Z</updated>
+  <updated>2016-09-22T02:22:03.579Z</updated>
   <id>http://shiyansong.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://shiyansong.com/2016/09/22/%E9%87%91%E5%AD%97%E5%A1%94%E7%9A%84%E8%AF%B1%E6%83%91/"/>
     <id>http://shiyansong.com/2016/09/22/金字塔的诱惑/</id>
     <published>2016-09-22T01:11:04.000Z</published>
-    <updated>2016-09-22T02:03:44.298Z</updated>
+    <updated>2016-09-22T02:22:03.579Z</updated>
     <content type="html"><![CDATA[<p> 开始异世界之旅   《1》</p>
 <p> 本文以K-Master服务器基础环境配置为例分别演示用户配置、sudo权限配置、网路配置、关闭防火墙、安装JDK工具等。用户需参照以下步骤完成KVMSlave1~KVMSlave3服务器的基础环境配置。</p>
 <h2 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h2><p>硬件环境：CentOS 6.5 服务器4台（一台为Master节点，三台为Slave节点）<br>软件环境：Java 1.7.0_45、Hadoop-1.2.1<br>1、安装环境</p>
@@ -59,6 +59,8 @@
     
     </summary>
     
+      <category term="编程" scheme="http://shiyansong.com/categories/Programming/"/>
+    
   </entry>
   
   <entry>
@@ -66,7 +68,7 @@
     <link href="http://shiyansong.com/2016/09/21/%E4%B8%80%E7%BE%A4%E9%80%97%E9%80%BC%E7%9A%84%E7%8B%82%E6%AC%A2/"/>
     <id>http://shiyansong.com/2016/09/21/一群逗逼的狂欢/</id>
     <published>2016-09-21T09:09:09.000Z</published>
-    <updated>2016-09-22T02:03:50.580Z</updated>
+    <updated>2016-09-22T02:22:10.079Z</updated>
     <content type="html"><![CDATA[<p>异世界之旅  《2》</p>
 <p>单机模式所需要的系统资源是最少的，这种安装模式下，Hadoop的 core-site.xml、mapred-site.xml、hdfs-site.xml配置文件均为空。默认情况下，官方hadoop- 1.2.1.tar.gz文件默认使用的就是单机安装模式。当配置文件为空时，Hadoop完全运行在本地，不与其他节点交互，也不使用Hadoop文件 系统，不加载任何守护进程，该模式主要用于开发调试MapReduce应用程序的逻辑，不与任何守护进程交互进而避免复杂性。以hadoop用户远程登录 K-Master服务器，在K-Master服务器上安装Hadoop过程如下。</p>
 <h2 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h2><p>硬件环境：CentOS 6.5 服务器4台（一台为Master节点，三台为Slave节点）<br>软件环境：Java 1.7.0_45、hadoop-1.2.1<br>1、安装Hadoop</p>
@@ -101,6 +103,8 @@
 <h2 id=""><a href="#" class="headerlink" title=""></a>]]>
     
     </summary>
+    
+      <category term="编程" scheme="http://shiyansong.com/categories/Programming/"/>
     
   </entry>
   
