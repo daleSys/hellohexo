@@ -86,13 +86,19 @@
 
 
 
+<meta name="description" content="异世界之旅  《2》
+单机模式所需要的系统资源是最少的，这种安装模式下，Hadoop的 core-site.xml、mapred-site.xml、hdfs-site.xml配置文件均为空。默认情况下，官方hadoop- 1.2.1.tar.gz文件默认使用的就是单机安装模式。当配置文件为空时，Hadoop完全运行在本地，不与其他节点交互，也不使用Hadoop文件 系统，不加载任何守护进程，该模式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="一群逗逼的狂欢">
 <meta property="og:url" content="http://shiyansong.com/2016/09/21/一群逗逼的狂欢/index.html">
 <meta property="og:site_name" content="小茹之之">
-<meta property="og:updated_time" content="2016-09-21T09:09:09.469Z">
+<meta property="og:description" content="异世界之旅  《2》
+单机模式所需要的系统资源是最少的，这种安装模式下，Hadoop的 core-site.xml、mapred-site.xml、hdfs-site.xml配置文件均为空。默认情况下，官方hadoop- 1.2.1.tar.gz文件默认使用的就是单机安装模式。当配置文件为空时，Hadoop完全运行在本地，不与其他节点交互，也不使用Hadoop文件 系统，不加载任何守护进程，该模式">
+<meta property="og:updated_time" content="2016-09-22T01:18:36.270Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一群逗逼的狂欢">
+<meta name="twitter:description" content="异世界之旅  《2》
+单机模式所需要的系统资源是最少的，这种安装模式下，Hadoop的 core-site.xml、mapred-site.xml、hdfs-site.xml配置文件均为空。默认情况下，官方hadoop- 1.2.1.tar.gz文件默认使用的就是单机安装模式。当配置文件为空时，Hadoop完全运行在本地，不与其他节点交互，也不使用Hadoop文件 系统，不加载任何守护进程，该模式">
 
 
 
@@ -173,7 +179,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -183,7 +189,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
-            Categories
+            Kategorien
           </a>
         </li>
       
@@ -193,7 +199,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
-            About
+            Über
           </a>
         </li>
       
@@ -203,7 +209,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -276,7 +282,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-o"></i>
             </span>
-            <span class="post-meta-item-text">Posted on</span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
             <time itemprop="dateCreated" datetime="2016-09-21T17:09:09+08:00" content="2016-09-21">
               2016-09-21
             </time>
@@ -305,7 +311,30 @@
       
 
       
-        
+        <p>异世界之旅  《2》</p>
+<p>单机模式所需要的系统资源是最少的，这种安装模式下，Hadoop的 core-site.xml、mapred-site.xml、hdfs-site.xml配置文件均为空。默认情况下，官方hadoop- 1.2.1.tar.gz文件默认使用的就是单机安装模式。当配置文件为空时，Hadoop完全运行在本地，不与其他节点交互，也不使用Hadoop文件 系统，不加载任何守护进程，该模式主要用于开发调试MapReduce应用程序的逻辑，不与任何守护进程交互进而避免复杂性。以hadoop用户远程登录 K-Master服务器，在K-Master服务器上安装Hadoop过程如下。</p>
+<h2 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h2><p>硬件环境：CentOS 6.5 服务器4台（一台为Master节点，三台为Slave节点）<br>软件环境：Java 1.7.0_45、hadoop-1.2.1</p>
+<h2 id="1、安装Hadoop"><a href="#1、安装Hadoop" class="headerlink" title="1、安装Hadoop"></a>1、安装Hadoop</h2><p>1）以hadoop用户远程登录K-Master服务器，下载hadoop-1.2.1.tar.gz ，并将其拷贝到K-Master服务器的/home/hadoop/目录下。<br>2）解压hadoop-1.2.1.tar.gz<br>[hadoop@KVM-Master ~]$ su hadoop</p>
+<p>[hadoop@KVM-Master ~]$ cd /usr</p>
+<p>[hadoop@KVM-Master usr]$ sudo tar –zxvf  /home/hadoop/hadoop-1.2.1.tar.gz</p>
+<p>3) 重命名hadoop<br>[hadoop@KVM-Master usr]$ sudo mv hadoop-1.2.1/ hadoop/</p>
+<p>4）将文件夹”hadoop”读权限分配给hadoop用户<br>很关键到一步，便于hadoop用户对该文件夹的文件拥有读写权限，不然后续hadoop启动后，无法在该文件夹创建文件和写入日志信息。<br>[hadoop@KVM-Master usr]$ sudo chown -R hadoop:hadoop /usr/hadoop</p>
+<p>5）删除安装包<br>[hadoop@KVM-Master ~]$ rm –rf /home/hadoop/hadoop-1.2.1.tar.gz #删除”hadoop-1.2.1.tar.gz”安装包</p>
+<h2 id="2、配置环境变量"><a href="#2、配置环境变量" class="headerlink" title="2、配置环境变量"></a>2、配置环境变量</h2><p>1）配置/etc/profile<br>[hadoop@KVM-Master ~]$ sudo vi /etc/profile</p>
+<p>#HADOOP</p>
+<p>export HADOOP_HOME=/usr/hadoop</p>
+<p>export PATH=$PATH:$HADOOP_HOME/bin </p>
+<p>export HADOOP_HOME_WARN_SUPPRESS=1 </p>
+<p>2）使得配置文件在当前终端立即生效<br>[hadoop@KVM-Master ~] $source /etc/profile</p>
+<h2 id="3、启动Hadoop"><a href="#3、启动Hadoop" class="headerlink" title="3、启动Hadoop"></a>3、启动Hadoop</h2><p>1）使用start-al.sh命令启动hadoop<br>[hadoop@KVM-Master ~] $start-all.sh</p>
+<p>2）使用jps查看启动是否成功<br>[hadoop@KVM-Master ~] $jps</p>
+<p>jps</p>
+<p>因为是单机模式，NameNode和JobTracker等都没有启动，怎么知道安装是否成功了？<br>3）查看HDFS系统<br>[hadoop@KVM-Master ~] $ hadoop fs -ls /</p>
+<p>通过hadoop fs -ls /命令查看Hadoop HDFS文件管理系统，显示的像Linux文件系统目录。若出现上述所示结果，表明Hadoop单机版安装成功。到目前为止，我们并没有对Hadoop的 配置文件做任何修改，全是默认配置，即配置文件全为空，如下所示。<br>[hadoop@K-Master hadoop] vi conf/core-site.xml</p>
+<p>&lt;?xml version=”1.0”?&gt;</p>
+<p>&lt;?xml-stylesheet type=”text/xsl” href=”configuration.xsl”?&gt;</p>
+<!-- Put site-specific property overrides in this file. -->
+<configuration><br><br><br><br></configuration>
       
     </div>
 
@@ -385,10 +414,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -405,7 +434,7 @@
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">2</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -443,7 +472,7 @@
               
             
             
-              <p class="post-toc-empty">This post does not have a Table of Contents</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#开发环境"><span class="nav-number">1.</span> <span class="nav-text">开发环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1、安装Hadoop"><span class="nav-number">2.</span> <span class="nav-text">1、安装Hadoop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、配置环境变量"><span class="nav-number">3.</span> <span class="nav-text">2、配置环境变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、启动Hadoop"><span class="nav-number">4.</span> <span class="nav-text">3、启动Hadoop</span></a></li></ol></div>
             
           </div>
         </section>
@@ -470,7 +499,7 @@
 </div>
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
