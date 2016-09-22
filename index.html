@@ -310,38 +310,15 @@
 
       
         
-          
-            <p> 开始异世界之旅   《1》</p>
+          <p> 开始异世界之旅   《1》</p>
 <p> 本文以K-Master服务器基础环境配置为例分别演示用户配置、sudo权限配置、网路配置、关闭防火墙、安装JDK工具等。用户需参照以下步骤完成KVMSlave1~KVMSlave3服务器的基础环境配置。</p>
-<h2 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h2><p>硬件环境：CentOS 6.5 服务器4台（一台为Master节点，三台为Slave节点）<br>软件环境：Java 1.7.0_45、Hadoop-1.2.1</p>
-<h2 id="1、安装环境"><a href="#1、安装环境" class="headerlink" title="1、安装环境"></a>1、安装环境</h2><p>硬件环境：CentOS 6.5 服务器4台（一台为Master节点，三台为Slave节点）<br>软件环境：Java 1.7.0_45、hadoop-1.2.1</p>
-<h2 id="2、-用户配置"><a href="#2、-用户配置" class="headerlink" title="2、 用户配置"></a>2、 用户配置</h2><p>1）添加一个用户<br>[hadoop@K-Master hadoop]$ adduser hadoop                       #新建hadoop用户<br>[hadoop@K-Master hadoop]$ passwd hadoop                            #hadoop用户设置密码</p>
-<p>2）建工作组<br>[hadoop@K-Master hadoop]$ groupadd hadoop                      #新建hadoop工作组</p>
-<p>3）给已有的用户增加工作组<br>[hadoop@K-Master hadoop]$ usermod -G hadoop hadoop</p>
-<h2 id="2、-sudo权限配置"><a href="#2、-sudo权限配置" class="headerlink" title="2、 sudo权限配置"></a>2、 sudo权限配置</h2><p>1）新建个用户组admin<br>[hadoop@K-Master hadoop]# groupadd admin</p>
-<p>2）将已有用户添加到admin用户组<br>[hadoop@K-Master hadoop]# usermod -G admin,hadoop hadoop</p>
-<p>3）赋予修改/etc/sudoers文件写权限<br>[hadoop@K-Master hadoop]# chmod u+w /etc/sudoers </p>
-<p>4）编辑/etc/sudoers文件<br>[hadoop@K-Master hadoop]# vi /etc/sudoers<br>缺省只有一条配置：<br>root    ALL=(ALL) ALL<br>在下边再加一条配置：<br>%admin    ALL=(ALL) ALL</p>
-<p>这样admin用户组就拥有了sudo权限，属于admin用户组的hadoop用户同样拥有了sudo权限。<br>5）编辑完成后降低权限<br>[hadoop@K-Master hadoop]$ chmod u-w /etc/sudoers</p>
-<h2 id="3、-网络配置"><a href="#3、-网络配置" class="headerlink" title="3、 网络配置"></a>3、 网络配置</h2><p>1）配置IP地址<br>[图片]<br>详细配置信息如下所示：<br>[hadoop@K-Master hadoop]$ su hadoop                #切换为hadoop用户<br>[hadoop@K-Master hadoop]$ sudo vi /etc/sysconfig/network-scripts/ifcfg-eth0<br>HWADDR=06:8D:30:00:00:27<br>TYPE=Ethernet<br>BOOTPROTO=static<br>IPADDR=192.168.100.147<br>PREFIX=24<br>GATEWAY=192.168.100.1<br>DNS1=192.168.100.1<br>DEFROUTE=yes<br>IPV4_FAILURE_FATAL=yes<br>IPV6INIT=no<br>NAME=eth0<br>UUID=660a57a1-5edf-4cdd-b456-e7e1059aef11<br>ONBOOT=yes<br>LAST_CONNECT=1411901185</p>
-<p>2）重启网络服务使网络设置生效<br>[hadoop@K-Master hadoop]$ sudo service network restart<br>Shutting down interface eth0:  Device state: 3 (disconnected)<br>                                                    [  OK  ]<br>Shutting down loopback interface:                   [  OK  ]<br>Bringing up loopback interface:                     [  OK  ]<br>Bringing up interface eth0:  Active connection state: activated<br>Active connection path: /org/freedesktop/NetworkManager/ActiveConnection/1<br>                                                    [  OK  ]</p>
-<p>3）测试IP网络配置<br>通过ifconfig命令查看网络的ip地址，如下信息显示eth0无线网卡的IP地址为192.168.100.147，与上述我们配置的IP地址吻合，表明IP地址配置成功。<br>[hadoop@K-Master ~]$ ifconfig<br>eth0  Link encap:Ethernet  HWaddr 06:8D:30:00:00:27<br>  inet addr:192.168.100.147  Bcast:192.168.100.255  Mask:255.255.255.0<br>  inet6 addr: fe80::48d:30ff:fe00:27/64 Scope:Link<br>  UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1<br>  RX packets:59099169 errors:0 dropped:0 overruns:0 frame:0<br>  TX packets:30049168 errors:0 dropped:0 overruns:0 carrier:0<br>  collisions:0 txqueuelen:1000<br>  RX bytes:12477388443 (11.6 GiB)  TX bytes:8811418526 (8.2 GiB)</p>
-<p>loLink encap:Local Loopback<br>  inet addr:127.0.0.1  Mask:255.0.0.0<br>  inet6 addr: ::1/128 Scope:Host<br>  UP LOOPBACK RUNNING  MTU:16436  Metric:1<br>  RX packets:2266013 errors:0 dropped:0 overruns:0 frame:0<br>  TX packets:2266013 errors:0 dropped:0 overruns:0 carrier:0<br>  collisions:0 txqueuelen:0<br>  RX bytes:666482169 (635.6 MiB)  TX bytes:666482169 (635.6 MiB)</p>
-<p>4）修改Host主机名<br>[hadoop@K-Master hadoop]$ sudo vi /etc/sysconfig/network<br>NETWORKING=yes<br>NETWORKING_IPV6=no<br>HOSTNAME=Master<br>[hadoop@K-Master hadoop]$ sudo vi /etc/hosts<br>127.0.0.1               localhost.localdomain<br>::1                     hdirect30 hdirect30<br>192.168.100.201         K-Master</p>
-<p>5）重启主机使得主机名生效<br>[hadoop@K-Master hadoop]$ sudo reboot</p>
-<h2 id="4、-关闭防火墙"><a href="#4、-关闭防火墙" class="headerlink" title="4、 关闭防火墙"></a>4、 关闭防火墙</h2><p>在启动前关闭集群中所有机器的防火墙，不然会出现datanode开后又自动关闭。<br>1）查看防火墙状态<br>[hadoop@K-Master ~]$ sudo service iptables status<br>iptables: Firewall is not running.</p>
-<p>2）关闭防火墙<br>[hadoop@K-Master hadoop]$ sudo service iptables stop<br>iptables: Setting chains to policy ACCEPT: filter   [  OK  ]<br>iptables: Flushing firewall rules:                  [  OK  ]<br>iptables: Unloading modules:                        [  OK  ]</p>
-<p>3）永久关闭防火墙<br>[hadoop@K-Master hadoop]$ sudo chkconfig iptables off</p>
-<p>4）关闭SELINUX<br>[hadoop@K-Master hadoop]$ sudo vi /etc/selinux/config<br>SELINUX=disabled</p>
-<h2 id="5、-安装JDK工具"><a href="#5、-安装JDK工具" class="headerlink" title="5、 安装JDK工具"></a>5、 安装JDK工具</h2><p>1）解压<br>[hadoop@K-Master ~]$ scp hadoop@192.168.0.201:/home/hadoop/jdk-7u65-linux-x64.rpm .<br>[hadoop@K-Master ~]$ sudo rpm -ivh jdk-7u65-linux-x64.rpm</p>
-<p>2）编辑”/etc/profile”文件，在后面添加Java的”JAVA_HOME”、”CLASSPATH”以及”PATH”内容。<br>[hadoop@K-Master ~]$ sudo vim /etc/profile</p>
-<p>#JAVA<br>export JAVA_HOME=/usr/java/jdk1.7.0_65<br>export JRE_HOME=$JAVA_HOME/jre<br>export CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JRE_HOME/lib<br>export PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin</p>
-<p>#HADOOP<br>export HADOOP_HOME=/usr/hadoop-1.2.1<br>export PATH=$PATH:$HADOOP_HOME/bin<br>export HADOOP_HOME_WARN_SUPPRESS=1</p>
-<p>3）使配置文件生效<br>[hadoop@K-Master ~]$ source /etc/profile</p>
-<p>更多详情见请继续阅读下一页的精彩内容： <a href="http://www.linuxidc.com/Linux/2015-03/114669p2.htm" target="_blank" rel="external">http://www.linuxidc.com/Linux/2015-03/114669p2.htm</a><br>————————————–分割线 ————————————–<br>Ubuntu14.04下Hadoop2.4.1单机/伪分布式安装配置教程  <a href="http://www.linuxidc.com/Linux/2015-02/113487.htm" target="_blank" rel="external">http://www.linuxidc.com/Linux/2015-02/113487.htm</a><br>CentOS安装和配置Hadoop2.2.0  <a href="http://www.linuxidc.com/Linux/2014-01/94685.htm" target="_blank" rel="external">http://www.linuxidc.com/Linux/2014-01/94685.htm</a><br>Ubuntu 13.04上搭建Hadoop环境 <a href="http://www.linuxidc.com/Linux/2013-06/86106.htm" target="_blank" rel="external">http://www.linuxidc.com/Linux/2013-06/86106.htm</a><br>Ubuntu 12.10 +Hadoop 1.2.1版本集群配置 <a href="http://www.linuxidc.com/Linux/2013-09/90600.htm" target="_blank" rel="external">http://www.linuxidc.com/Linux/2013-09/90600.htm</a><br>Ubuntu上搭建Hadoop环境（单机模式+伪分布模式） <a href="http://www.linuxidc.com/Linux/2013-01/77681.htm" target="_blank" rel="external">http://www.linuxidc.com/Linux/2013-01/77681.htm</a><br>Ubuntu下Hadoop环境的配置 <a href="http://www.linuxidc.com/Linux/2012-11/74539.htm" target="_blank" rel="external">http://www.linuxidc.com/Linux/2012-11/74539.htm</a><br>单机版搭建Hadoop环境图文教程详解 <a href="http://www.linuxidc.com/Linux/2012-02/53927.htm" target="_blank" rel="external">http://www.linuxidc.com/Linux/2012-02/53927.htm</a><br>搭建Hadoop环境（在Winodws环境下用虚拟机虚拟两个Ubuntu系统进行搭建） <a href="http://www.linuxidc.com/Linux/2011-12/48894.htm" target="_blank" rel="external">http://www.linuxidc.com/Linux/2011-12/48894.htm</a></p>
-<p> 《——————————–loading————————————–》</p>
-
-          
+<h2 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h2><p>硬件环境：CentOS 6.5 服务器4台（一台为Master节点，三台为Slave节点）<br>软件环境：Java 1.7.0_45、Hadoop-1.2.1<br>1、安装环境</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/22/金字塔的诱惑/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -432,35 +409,15 @@
 
       
         
-          
-            <p>异世界之旅  《2》</p>
+          <p>异世界之旅  《2》</p>
 <p>单机模式所需要的系统资源是最少的，这种安装模式下，Hadoop的 core-site.xml、mapred-site.xml、hdfs-site.xml配置文件均为空。默认情况下，官方hadoop- 1.2.1.tar.gz文件默认使用的就是单机安装模式。当配置文件为空时，Hadoop完全运行在本地，不与其他节点交互，也不使用Hadoop文件 系统，不加载任何守护进程，该模式主要用于开发调试MapReduce应用程序的逻辑，不与任何守护进程交互进而避免复杂性。以hadoop用户远程登录 K-Master服务器，在K-Master服务器上安装Hadoop过程如下。</p>
-<h2 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h2><p>硬件环境：CentOS 6.5 服务器4台（一台为Master节点，三台为Slave节点）<br>软件环境：Java 1.7.0_45、hadoop-1.2.1</p>
-<h2 id="1、安装Hadoop"><a href="#1、安装Hadoop" class="headerlink" title="1、安装Hadoop"></a>1、安装Hadoop</h2><p>1）以hadoop用户远程登录K-Master服务器，下载hadoop-1.2.1.tar.gz ，并将其拷贝到K-Master服务器的/home/hadoop/目录下。<br>2）解压hadoop-1.2.1.tar.gz<br>[hadoop@KVM-Master ~]$ su hadoop</p>
-<p>[hadoop@KVM-Master ~]$ cd /usr</p>
-<p>[hadoop@KVM-Master usr]$ sudo tar –zxvf  /home/hadoop/hadoop-1.2.1.tar.gz</p>
-<p>3) 重命名hadoop<br>[hadoop@KVM-Master usr]$ sudo mv hadoop-1.2.1/ hadoop/</p>
-<p>4）将文件夹”hadoop”读权限分配给hadoop用户<br>很关键到一步，便于hadoop用户对该文件夹的文件拥有读写权限，不然后续hadoop启动后，无法在该文件夹创建文件和写入日志信息。<br>[hadoop@KVM-Master usr]$ sudo chown -R hadoop:hadoop /usr/hadoop</p>
-<p>5）删除安装包<br>[hadoop@KVM-Master ~]$ rm –rf /home/hadoop/hadoop-1.2.1.tar.gz #删除”hadoop-1.2.1.tar.gz”安装包</p>
-<h2 id="2、配置环境变量"><a href="#2、配置环境变量" class="headerlink" title="2、配置环境变量"></a>2、配置环境变量</h2><p>1）配置/etc/profile<br>[hadoop@KVM-Master ~]$ sudo vi /etc/profile</p>
-<p>#HADOOP</p>
-<p>export HADOOP_HOME=/usr/hadoop</p>
-<p>export PATH=$PATH:$HADOOP_HOME/bin </p>
-<p>export HADOOP_HOME_WARN_SUPPRESS=1 </p>
-<p>2）使得配置文件在当前终端立即生效<br>[hadoop@KVM-Master ~] $source /etc/profile</p>
-<h2 id="3、启动Hadoop"><a href="#3、启动Hadoop" class="headerlink" title="3、启动Hadoop"></a>3、启动Hadoop</h2><p>1）使用start-al.sh命令启动hadoop<br>[hadoop@KVM-Master ~] $start-all.sh</p>
-<p>2）使用jps查看启动是否成功<br>[hadoop@KVM-Master ~] $jps</p>
-<p>jps</p>
-<p>因为是单机模式，NameNode和JobTracker等都没有启动，怎么知道安装是否成功了？<br>3）查看HDFS系统<br>[hadoop@KVM-Master ~] $ hadoop fs -ls /</p>
-<p>通过hadoop fs -ls /命令查看Hadoop HDFS文件管理系统，显示的像Linux文件系统目录。若出现上述所示结果，表明Hadoop单机版安装成功。到目前为止，我们并没有对Hadoop的 配置文件做任何修改，全是默认配置，即配置文件全为空，如下所示。<br>[hadoop@K-Master hadoop] vi conf/core-site.xml</p>
-<p>&lt;?xml version=”1.0”?&gt;</p>
-<p>&lt;?xml-stylesheet type=”text/xsl” href=”configuration.xsl”?&gt;</p>
-<!-- Put site-specific property overrides in this file. -->
-<configuration><br><br><br><br></configuration>
-
-<p>《——————————–loading————————————–》</p>
-
-          
+<h2 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h2><p>硬件环境：CentOS 6.5 服务器4台（一台为Master节点，三台为Slave节点）<br>软件环境：Java 1.7.0_45、hadoop-1.2.1<br>1、安装Hadoop</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/21/一群逗逼的狂欢/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
         
       
     </div>

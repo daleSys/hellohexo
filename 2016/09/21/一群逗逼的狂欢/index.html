@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="小茹之之">
 <meta property="og:description" content="异世界之旅  《2》
 单机模式所需要的系统资源是最少的，这种安装模式下，Hadoop的 core-site.xml、mapred-site.xml、hdfs-site.xml配置文件均为空。默认情况下，官方hadoop- 1.2.1.tar.gz文件默认使用的就是单机安装模式。当配置文件为空时，Hadoop完全运行在本地，不与其他节点交互，也不使用Hadoop文件 系统，不加载任何守护进程，该模式">
-<meta property="og:updated_time" content="2016-09-22T01:20:12.152Z">
+<meta property="og:updated_time" content="2016-09-22T02:03:50.580Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一群逗逼的狂欢">
 <meta name="twitter:description" content="异世界之旅  《2》
@@ -313,8 +313,8 @@
       
         <p>异世界之旅  《2》</p>
 <p>单机模式所需要的系统资源是最少的，这种安装模式下，Hadoop的 core-site.xml、mapred-site.xml、hdfs-site.xml配置文件均为空。默认情况下，官方hadoop- 1.2.1.tar.gz文件默认使用的就是单机安装模式。当配置文件为空时，Hadoop完全运行在本地，不与其他节点交互，也不使用Hadoop文件 系统，不加载任何守护进程，该模式主要用于开发调试MapReduce应用程序的逻辑，不与任何守护进程交互进而避免复杂性。以hadoop用户远程登录 K-Master服务器，在K-Master服务器上安装Hadoop过程如下。</p>
-<h2 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h2><p>硬件环境：CentOS 6.5 服务器4台（一台为Master节点，三台为Slave节点）<br>软件环境：Java 1.7.0_45、hadoop-1.2.1</p>
-<h2 id="1、安装Hadoop"><a href="#1、安装Hadoop" class="headerlink" title="1、安装Hadoop"></a>1、安装Hadoop</h2><p>1）以hadoop用户远程登录K-Master服务器，下载hadoop-1.2.1.tar.gz ，并将其拷贝到K-Master服务器的/home/hadoop/目录下。<br>2）解压hadoop-1.2.1.tar.gz<br>[hadoop@KVM-Master ~]$ su hadoop</p>
+<h2 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h2><p>硬件环境：CentOS 6.5 服务器4台（一台为Master节点，三台为Slave节点）<br>软件环境：Java 1.7.0_45、hadoop-1.2.1<br>1、安装Hadoop</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><p>1）以hadoop用户远程登录K-Master服务器，下载hadoop-1.2.1.tar.gz ，并将其拷贝到K-Master服务器的/home/hadoop/目录下。<br>2）解压hadoop-1.2.1.tar.gz<br>[hadoop@KVM-Master ~]$ su hadoop</p>
 <p>[hadoop@KVM-Master ~]$ cd /usr</p>
 <p>[hadoop@KVM-Master usr]$ sudo tar –zxvf  /home/hadoop/hadoop-1.2.1.tar.gz</p>
 <p>3) 重命名hadoop<br>[hadoop@KVM-Master usr]$ sudo mv hadoop-1.2.1/ hadoop/</p>
@@ -475,7 +475,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#开发环境"><span class="nav-number">1.</span> <span class="nav-text">开发环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1、安装Hadoop"><span class="nav-number">2.</span> <span class="nav-text">1、安装Hadoop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、配置环境变量"><span class="nav-number">3.</span> <span class="nav-text">2、配置环境变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、启动Hadoop"><span class="nav-number">4.</span> <span class="nav-text">3、启动Hadoop</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#开发环境"><span class="nav-number">1.</span> <span class="nav-text">开发环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">2.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、配置环境变量"><span class="nav-number">3.</span> <span class="nav-text">2、配置环境变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、启动Hadoop"><span class="nav-number">4.</span> <span class="nav-text">3、启动Hadoop</span></a></li></ol></div>
             
           </div>
         </section>

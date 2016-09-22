@@ -88,23 +88,20 @@
 
 <meta name="description" content="开始异世界之旅   《1》
  本文以K-Master服务器基础环境配置为例分别演示用户配置、sudo权限配置、网路配置、关闭防火墙、安装JDK工具等。用户需参照以下步骤完成KVMSlave1~KVMSlave3服务器的基础环境配置。
-开发环境硬件环境：CentOS 6.5 服务器4台（一台为Master节点，三台为Slave节点）软件环境：Java 1.7.0_45、Hadoop-1.2.1
-1">
+开发环境硬件环境：CentOS 6.5 服务器4台（一台为Master节点，三台为Slave节点）软件环境：Java 1.7.0_45、Hadoop-1.2.11、">
 <meta property="og:type" content="article">
 <meta property="og:title" content="金字塔的诱惑">
 <meta property="og:url" content="http://shiyansong.com/2016/09/22/金字塔的诱惑/index.html">
 <meta property="og:site_name" content="小茹之之">
 <meta property="og:description" content="开始异世界之旅   《1》
  本文以K-Master服务器基础环境配置为例分别演示用户配置、sudo权限配置、网路配置、关闭防火墙、安装JDK工具等。用户需参照以下步骤完成KVMSlave1~KVMSlave3服务器的基础环境配置。
-开发环境硬件环境：CentOS 6.5 服务器4台（一台为Master节点，三台为Slave节点）软件环境：Java 1.7.0_45、Hadoop-1.2.1
-1">
-<meta property="og:updated_time" content="2016-09-22T01:20:26.355Z">
+开发环境硬件环境：CentOS 6.5 服务器4台（一台为Master节点，三台为Slave节点）软件环境：Java 1.7.0_45、Hadoop-1.2.11、">
+<meta property="og:updated_time" content="2016-09-22T02:03:44.298Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="金字塔的诱惑">
 <meta name="twitter:description" content="开始异世界之旅   《1》
  本文以K-Master服务器基础环境配置为例分别演示用户配置、sudo权限配置、网路配置、关闭防火墙、安装JDK工具等。用户需参照以下步骤完成KVMSlave1~KVMSlave3服务器的基础环境配置。
-开发环境硬件环境：CentOS 6.5 服务器4台（一台为Master节点，三台为Slave节点）软件环境：Java 1.7.0_45、Hadoop-1.2.1
-1">
+开发环境硬件环境：CentOS 6.5 服务器4台（一台为Master节点，三台为Slave节点）软件环境：Java 1.7.0_45、Hadoop-1.2.11、">
 
 
 
@@ -319,8 +316,8 @@
       
         <p> 开始异世界之旅   《1》</p>
 <p> 本文以K-Master服务器基础环境配置为例分别演示用户配置、sudo权限配置、网路配置、关闭防火墙、安装JDK工具等。用户需参照以下步骤完成KVMSlave1~KVMSlave3服务器的基础环境配置。</p>
-<h2 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h2><p>硬件环境：CentOS 6.5 服务器4台（一台为Master节点，三台为Slave节点）<br>软件环境：Java 1.7.0_45、Hadoop-1.2.1</p>
-<h2 id="1、安装环境"><a href="#1、安装环境" class="headerlink" title="1、安装环境"></a>1、安装环境</h2><p>硬件环境：CentOS 6.5 服务器4台（一台为Master节点，三台为Slave节点）<br>软件环境：Java 1.7.0_45、hadoop-1.2.1</p>
+<h2 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h2><p>硬件环境：CentOS 6.5 服务器4台（一台为Master节点，三台为Slave节点）<br>软件环境：Java 1.7.0_45、Hadoop-1.2.1<br>1、安装环境</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><p>硬件环境：CentOS 6.5 服务器4台（一台为Master节点，三台为Slave节点）<br>软件环境：Java 1.7.0_45、hadoop-1.2.1</p>
 <h2 id="2、-用户配置"><a href="#2、-用户配置" class="headerlink" title="2、 用户配置"></a>2、 用户配置</h2><p>1）添加一个用户<br>[hadoop@K-Master hadoop]$ adduser hadoop                       #新建hadoop用户<br>[hadoop@K-Master hadoop]$ passwd hadoop                            #hadoop用户设置密码</p>
 <p>2）建工作组<br>[hadoop@K-Master hadoop]$ groupadd hadoop                      #新建hadoop工作组</p>
 <p>3）给已有的用户增加工作组<br>[hadoop@K-Master hadoop]$ usermod -G hadoop hadoop</p>
@@ -329,7 +326,8 @@
 <p>3）赋予修改/etc/sudoers文件写权限<br>[hadoop@K-Master hadoop]# chmod u+w /etc/sudoers </p>
 <p>4）编辑/etc/sudoers文件<br>[hadoop@K-Master hadoop]# vi /etc/sudoers<br>缺省只有一条配置：<br>root    ALL=(ALL) ALL<br>在下边再加一条配置：<br>%admin    ALL=(ALL) ALL</p>
 <p>这样admin用户组就拥有了sudo权限，属于admin用户组的hadoop用户同样拥有了sudo权限。<br>5）编辑完成后降低权限<br>[hadoop@K-Master hadoop]$ chmod u-w /etc/sudoers</p>
-<h2 id="3、-网络配置"><a href="#3、-网络配置" class="headerlink" title="3、 网络配置"></a>3、 网络配置</h2><p>1）配置IP地址<br>[图片]<br>详细配置信息如下所示：<br>[hadoop@K-Master hadoop]$ su hadoop                #切换为hadoop用户<br>[hadoop@K-Master hadoop]$ sudo vi /etc/sysconfig/network-scripts/ifcfg-eth0<br>HWADDR=06:8D:30:00:00:27<br>TYPE=Ethernet<br>BOOTPROTO=static<br>IPADDR=192.168.100.147<br>PREFIX=24<br>GATEWAY=192.168.100.1<br>DNS1=192.168.100.1<br>DEFROUTE=yes<br>IPV4_FAILURE_FATAL=yes<br>IPV6INIT=no<br>NAME=eth0<br>UUID=660a57a1-5edf-4cdd-b456-e7e1059aef11<br>ONBOOT=yes<br>LAST_CONNECT=1411901185</p>
+<h2 id="3、-网络配置"><a href="#3、-网络配置" class="headerlink" title="3、 网络配置"></a>3、 网络配置</h2><p>1）配置IP地址</p>
+<p>详细配置信息如下所示：<br>[hadoop@K-Master hadoop]$ su hadoop                #切换为hadoop用户<br>[hadoop@K-Master hadoop]$ sudo vi /etc/sysconfig/network-scripts/ifcfg-eth0<br>HWADDR=06:8D:30:00:00:27<br>TYPE=Ethernet<br>BOOTPROTO=static<br>IPADDR=192.168.100.147<br>PREFIX=24<br>GATEWAY=192.168.100.1<br>DNS1=192.168.100.1<br>DEFROUTE=yes<br>IPV4_FAILURE_FATAL=yes<br>IPV6INIT=no<br>NAME=eth0<br>UUID=660a57a1-5edf-4cdd-b456-e7e1059aef11<br>ONBOOT=yes<br>LAST_CONNECT=1411901185</p>
 <p>2）重启网络服务使网络设置生效<br>[hadoop@K-Master hadoop]$ sudo service network restart<br>Shutting down interface eth0:  Device state: 3 (disconnected)<br>                                                    [  OK  ]<br>Shutting down loopback interface:                   [  OK  ]<br>Bringing up loopback interface:                     [  OK  ]<br>Bringing up interface eth0:  Active connection state: activated<br>Active connection path: /org/freedesktop/NetworkManager/ActiveConnection/1<br>                                                    [  OK  ]</p>
 <p>3）测试IP网络配置<br>通过ifconfig命令查看网络的ip地址，如下信息显示eth0无线网卡的IP地址为192.168.100.147，与上述我们配置的IP地址吻合，表明IP地址配置成功。<br>[hadoop@K-Master ~]$ ifconfig<br>eth0  Link encap:Ethernet  HWaddr 06:8D:30:00:00:27<br>  inet addr:192.168.100.147  Bcast:192.168.100.255  Mask:255.255.255.0<br>  inet6 addr: fe80::48d:30ff:fe00:27/64 Scope:Link<br>  UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1<br>  RX packets:59099169 errors:0 dropped:0 overruns:0 frame:0<br>  TX packets:30049168 errors:0 dropped:0 overruns:0 carrier:0<br>  collisions:0 txqueuelen:1000<br>  RX bytes:12477388443 (11.6 GiB)  TX bytes:8811418526 (8.2 GiB)</p>
 <p>loLink encap:Local Loopback<br>  inet addr:127.0.0.1  Mask:255.0.0.0<br>  inet6 addr: ::1/128 Scope:Host<br>  UP LOOPBACK RUNNING  MTU:16436  Metric:1<br>  RX packets:2266013 errors:0 dropped:0 overruns:0 frame:0<br>  TX packets:2266013 errors:0 dropped:0 overruns:0 carrier:0<br>  collisions:0 txqueuelen:0<br>  RX bytes:666482169 (635.6 MiB)  TX bytes:666482169 (635.6 MiB)</p>
@@ -484,7 +482,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#开发环境"><span class="nav-number">1.</span> <span class="nav-text">开发环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1、安装环境"><span class="nav-number">2.</span> <span class="nav-text">1、安装环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、-用户配置"><span class="nav-number">3.</span> <span class="nav-text">2、 用户配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、-sudo权限配置"><span class="nav-number">4.</span> <span class="nav-text">2、 sudo权限配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、-网络配置"><span class="nav-number">5.</span> <span class="nav-text">3、 网络配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、-关闭防火墙"><span class="nav-number">6.</span> <span class="nav-text">4、 关闭防火墙</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、-安装JDK工具"><span class="nav-number">7.</span> <span class="nav-text">5、 安装JDK工具</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#开发环境"><span class="nav-number">1.</span> <span class="nav-text">开发环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">2.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、-用户配置"><span class="nav-number">3.</span> <span class="nav-text">2、 用户配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、-sudo权限配置"><span class="nav-number">4.</span> <span class="nav-text">2、 sudo权限配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、-网络配置"><span class="nav-number">5.</span> <span class="nav-text">3、 网络配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、-关闭防火墙"><span class="nav-number">6.</span> <span class="nav-text">4、 关闭防火墙</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、-安装JDK工具"><span class="nav-number">7.</span> <span class="nav-text">5、 安装JDK工具</span></a></li></ol></div>
             
           </div>
         </section>
