@@ -1,25 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title><![CDATA[小茹之之]]></title>
-  <subtitle><![CDATA[业精于勤而荒于嬉 行成于思而毁于随]]></subtitle>
+  <title>小茹之之</title>
+  <subtitle>业精于勤而荒于嬉 行成于思而毁于随</subtitle>
   <link href="/atom.xml" rel="self"/>
+  
   <link href="http://shiyansong.com/"/>
   <updated>2016-09-26T08:49:55.981Z</updated>
   <id>http://shiyansong.com/</id>
   
   <author>
-    <name><![CDATA[爱久见珍心]]></name>
+    <name>爱久见珍心</name>
     
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[设计模式之 总]]></title>
+    <title>设计模式之 总</title>
     <link href="http://shiyansong.com/2016/09/26/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B-%E6%80%BB/"/>
     <id>http://shiyansong.com/2016/09/26/设计模式之-总/</id>
     <published>2016-09-26T08:47:45.000Z</published>
     <updated>2016-09-26T08:49:55.981Z</updated>
+    
     <content type="html"><![CDATA[<p>《转》<br>说到设计模式，当初第一次听到时，第一反应就是很深奥，完全理解不了这个概念到底是什么意思，下面我先从网上摘录一份定义。</p>
 <pre><code>设计模式（Designpattern）是一套被反复使用、多数人知晓的、经过分类编目的、代码设计经验的总结。
 
@@ -318,25 +320,29 @@ public int getB(){
 
 下期预告：单例模式。
 </code></pre>]]></content>
+    
     <summary type="html">
-    <![CDATA[<p>《转》<br>说到设计模式，当初第一次听到时，第一反应就是很深奥，完全理解不了这个概念到底是什么意思，下面我先从网上摘录一份定义。</p>
-<pre><code>设计模式（Designpattern）是一套被反复使用、多数人知晓的、经过分类编目的、代码设计经验的总结。
+    
+      &lt;p&gt;《转》&lt;br&gt;说到设计模式，当初第一次听到时，第一反应就是很深奥，完全理解不了这个概念到底是什么意思，下面我先从网上摘录一份定义。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;设计模式（Designpattern）是一套被反复使用、多数人知晓的、经过分类编目的、代码设计经验的总结。
 
 上面是百度当中的解释，来解释一下这句简单的话的含义，几个关键词。
-</code></pre>]]>
+&lt;/code&gt;&lt;/pre&gt;
     
     </summary>
     
       <category term="编程" scheme="http://shiyansong.com/categories/Programming/"/>
     
+    
   </entry>
   
   <entry>
-    <title><![CDATA[金字塔的诱惑]]></title>
+    <title>金字塔的诱惑</title>
     <link href="http://shiyansong.com/2016/09/22/%E9%87%91%E5%AD%97%E5%A1%94%E7%9A%84%E8%AF%B1%E6%83%91/"/>
     <id>http://shiyansong.com/2016/09/22/金字塔的诱惑/</id>
     <published>2016-09-22T01:11:04.000Z</published>
     <updated>2016-09-22T02:22:03.579Z</updated>
+    
     <content type="html"><![CDATA[<p> 开始异世界之旅   《1》</p>
 <p> 本文以K-Master服务器基础环境配置为例分别演示用户配置、sudo权限配置、网路配置、关闭防火墙、安装JDK工具等。用户需参照以下步骤完成KVMSlave1~KVMSlave3服务器的基础环境配置。</p>
 <h2 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h2><p>硬件环境：CentOS 6.5 服务器4台（一台为Master节点，三台为Slave节点）<br>软件环境：Java 1.7.0_45、Hadoop-1.2.1<br>1、安装环境</p>
@@ -368,24 +374,28 @@ public int getB(){
 <p>更多详情见请继续阅读下一页的精彩内容： <a href="http://www.linuxidc.com/Linux/2015-03/114669p2.htm" target="_blank" rel="external">http://www.linuxidc.com/Linux/2015-03/114669p2.htm</a><br>————————————–分割线 ————————————–<br>Ubuntu14.04下Hadoop2.4.1单机/伪分布式安装配置教程  <a href="http://www.linuxidc.com/Linux/2015-02/113487.htm" target="_blank" rel="external">http://www.linuxidc.com/Linux/2015-02/113487.htm</a><br>CentOS安装和配置Hadoop2.2.0  <a href="http://www.linuxidc.com/Linux/2014-01/94685.htm" target="_blank" rel="external">http://www.linuxidc.com/Linux/2014-01/94685.htm</a><br>Ubuntu 13.04上搭建Hadoop环境 <a href="http://www.linuxidc.com/Linux/2013-06/86106.htm" target="_blank" rel="external">http://www.linuxidc.com/Linux/2013-06/86106.htm</a><br>Ubuntu 12.10 +Hadoop 1.2.1版本集群配置 <a href="http://www.linuxidc.com/Linux/2013-09/90600.htm" target="_blank" rel="external">http://www.linuxidc.com/Linux/2013-09/90600.htm</a><br>Ubuntu上搭建Hadoop环境（单机模式+伪分布模式） <a href="http://www.linuxidc.com/Linux/2013-01/77681.htm" target="_blank" rel="external">http://www.linuxidc.com/Linux/2013-01/77681.htm</a><br>Ubuntu下Hadoop环境的配置 <a href="http://www.linuxidc.com/Linux/2012-11/74539.htm" target="_blank" rel="external">http://www.linuxidc.com/Linux/2012-11/74539.htm</a><br>单机版搭建Hadoop环境图文教程详解 <a href="http://www.linuxidc.com/Linux/2012-02/53927.htm" target="_blank" rel="external">http://www.linuxidc.com/Linux/2012-02/53927.htm</a><br>搭建Hadoop环境（在Winodws环境下用虚拟机虚拟两个Ubuntu系统进行搭建） <a href="http://www.linuxidc.com/Linux/2011-12/48894.htm" target="_blank" rel="external">http://www.linuxidc.com/Linux/2011-12/48894.htm</a></p>
 <p> 《——————————–loading————————————–》</p>
 ]]></content>
+    
     <summary type="html">
-    <![CDATA[<p> 开始异世界之旅   《1》</p>
-<p> 本文以K-Master服务器基础环境配置为例分别演示用户配置、sudo权限配置、网路配置、关闭防火墙、安装JDK工具等。用户需参照以下步骤完成KVMSlave1~KVMSlave3服务器的基础环境配置。</p>
-<h2 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h2><p>硬件环境：CentOS 6.5 服务器4台（一台为Master节点，三台为Slave节点）<br>软件环境：Java 1.7.0_45、Hadoop-1.2.1<br>1、安装环境</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a>]]>
+    
+      &lt;p&gt; 开始异世界之旅   《1》&lt;/p&gt;
+&lt;p&gt; 本文以K-Master服务器基础环境配置为例分别演示用户配置、sudo权限配置、网路配置、关闭防火墙、安装JDK工具等。用户需参照以下步骤完成KVMSlave1~KVMSlave3服务器的基础环境配置。&lt;/p&gt;
+&lt;h2 id=&quot;开发环境&quot;&gt;&lt;a href=&quot;#开发环境&quot; class=&quot;headerlink&quot; title=&quot;开发环境&quot;&gt;&lt;/a&gt;开发环境&lt;/h2&gt;&lt;p&gt;硬件环境：CentOS 6.5 服务器4台（一台为Master节点，三台为Slave节点）&lt;br&gt;软件环境：Java 1.7.0_45、Hadoop-1.2.1&lt;br&gt;1、安装环境&lt;/p&gt;
+&lt;h2 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;
     
     </summary>
     
       <category term="编程" scheme="http://shiyansong.com/categories/Programming/"/>
     
+    
   </entry>
   
   <entry>
-    <title><![CDATA[一群逗逼的狂欢]]></title>
+    <title>一群逗逼的狂欢</title>
     <link href="http://shiyansong.com/2016/09/21/%E4%B8%80%E7%BE%A4%E9%80%97%E9%80%BC%E7%9A%84%E7%8B%82%E6%AC%A2/"/>
     <id>http://shiyansong.com/2016/09/21/一群逗逼的狂欢/</id>
     <published>2016-09-21T09:09:09.000Z</published>
     <updated>2016-09-22T02:22:10.079Z</updated>
+    
     <content type="html"><![CDATA[<p>异世界之旅  《2》</p>
 <p>单机模式所需要的系统资源是最少的，这种安装模式下，Hadoop的 core-site.xml、mapred-site.xml、hdfs-site.xml配置文件均为空。默认情况下，官方hadoop- 1.2.1.tar.gz文件默认使用的就是单机安装模式。当配置文件为空时，Hadoop完全运行在本地，不与其他节点交互，也不使用Hadoop文件 系统，不加载任何守护进程，该模式主要用于开发调试MapReduce应用程序的逻辑，不与任何守护进程交互进而避免复杂性。以hadoop用户远程登录 K-Master服务器，在K-Master服务器上安装Hadoop过程如下。</p>
 <h2 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h2><p>硬件环境：CentOS 6.5 服务器4台（一台为Master节点，三台为Slave节点）<br>软件环境：Java 1.7.0_45、hadoop-1.2.1<br>1、安装Hadoop</p>
@@ -413,15 +423,18 @@ public int getB(){
 
 <p>《——————————–loading————————————–》</p>
 ]]></content>
+    
     <summary type="html">
-    <![CDATA[<p>异世界之旅  《2》</p>
-<p>单机模式所需要的系统资源是最少的，这种安装模式下，Hadoop的 core-site.xml、mapred-site.xml、hdfs-site.xml配置文件均为空。默认情况下，官方hadoop- 1.2.1.tar.gz文件默认使用的就是单机安装模式。当配置文件为空时，Hadoop完全运行在本地，不与其他节点交互，也不使用Hadoop文件 系统，不加载任何守护进程，该模式主要用于开发调试MapReduce应用程序的逻辑，不与任何守护进程交互进而避免复杂性。以hadoop用户远程登录 K-Master服务器，在K-Master服务器上安装Hadoop过程如下。</p>
-<h2 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h2><p>硬件环境：CentOS 6.5 服务器4台（一台为Master节点，三台为Slave节点）<br>软件环境：Java 1.7.0_45、hadoop-1.2.1<br>1、安装Hadoop</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a>]]>
+    
+      &lt;p&gt;异世界之旅  《2》&lt;/p&gt;
+&lt;p&gt;单机模式所需要的系统资源是最少的，这种安装模式下，Hadoop的 core-site.xml、mapred-site.xml、hdfs-site.xml配置文件均为空。默认情况下，官方hadoop- 1.2.1.tar.gz文件默认使用的就是单机安装模式。当配置文件为空时，Hadoop完全运行在本地，不与其他节点交互，也不使用Hadoop文件 系统，不加载任何守护进程，该模式主要用于开发调试MapReduce应用程序的逻辑，不与任何守护进程交互进而避免复杂性。以hadoop用户远程登录 K-Master服务器，在K-Master服务器上安装Hadoop过程如下。&lt;/p&gt;
+&lt;h2 id=&quot;开发环境&quot;&gt;&lt;a href=&quot;#开发环境&quot; class=&quot;headerlink&quot; title=&quot;开发环境&quot;&gt;&lt;/a&gt;开发环境&lt;/h2&gt;&lt;p&gt;硬件环境：CentOS 6.5 服务器4台（一台为Master节点，三台为Slave节点）&lt;br&gt;软件环境：Java 1.7.0_45、hadoop-1.2.1&lt;br&gt;1、安装Hadoop&lt;/p&gt;
+&lt;h2 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;
     
     </summary>
     
       <category term="编程" scheme="http://shiyansong.com/categories/Programming/"/>
+    
     
   </entry>
   
